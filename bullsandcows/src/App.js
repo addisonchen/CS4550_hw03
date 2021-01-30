@@ -85,41 +85,44 @@ function App() {
   }
 
   return (
-    <div className="MainContainer">
-      <div className="HistoryContainer">
-        <div className="HistoryRow">
-          <div className="Red Number Cell">
-            #
+    <>
+      <div className="MainContainer">
+        <div className="HistoryContainer">
+          <div className="HistoryRow">
+            <div className="Red Number Cell">
+              #
+            </div>
+            <div className="Red Cell">
+              Guess
+            </div>
+            <div className="Red Cell">
+              Bulls
+            </div>
+            <div className="Red Cell">
+              Cows
+            </div>
           </div>
-          <div className="Red Cell">
-            Guess
-          </div>
-          <div className="Red Cell">
-            Bulls
-          </div>
-          <div className="Red Cell">
-            Cows
-          </div>
+          {
+            guessHistory.map((guess, index) => (
+              <GuessRow key={index} index={index} guess={guess}/>
+            ))
+          }
         </div>
-        {
-          guessHistory.map((guess, index) => (
-            <GuessRow key={index} index={index} guess={guess}/>
-          ))
-        }
-      </div>
-      <div className="GuessContainer">
-        <input className="InputGuess" type="text" value={curGuess} onKeyDown={handleKeyPress} onChange={handleValueChange} maxLength="4" disabled={paused? "disabled" : ""}/>
-        { paused ? 
-          <button className="NewGame GuessButton" onClick={reset}>Play Again</button>
-          :
-          <>
-            <button className="GuessButton" onClick={guess}>Guess</button>
-            <button className="ResetButton" onClick={reset}>Reset</button>
-          </>
-        }
+        <div className="GuessContainer">
+          <input className="InputGuess" type="text" value={curGuess} onKeyDown={handleKeyPress} onChange={handleValueChange} maxLength="4" disabled={paused? "disabled" : ""}/>
+          { paused ? 
+            <button className="NewGame GuessButton" onClick={reset}>Play Again</button>
+            :
+            <>
+              <button className="GuessButton" onClick={guess}>Guess</button>
+              <button className="ResetButton" onClick={reset}>Reset</button>
+            </>
+          }
 
+        </div>
       </div>
-    </div>
+      <a className="Link" href="http://swoogity.com">Back to Home</a>
+    </>
   );
 }
 
