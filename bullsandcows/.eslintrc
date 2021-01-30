@@ -1,8 +1,0 @@
-{
-    "parser": 'babel-eslint',
-    "rules": {
-        "no-unused-vars": ["warning", {
-            "varsIgnorePatter": "^_"
-        }]
-    }
-}

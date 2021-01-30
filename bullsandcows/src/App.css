@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.MainContainer {
+  width: 100vw;
+  height: 100vh;
+  min-width: 300px;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #131515;
 }
 
-.App-link {
-  color: #61dafb;
+.HistoryContainer {
+  width: 300px;
+  height: 450px;
+  background-color: #1D1F20;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.HistoryRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
+
+
+.Red.Cell {
+  color: #FF3864;
+}
+
+.Yellow.Cell {
+  color: #DCF764;
+}
+
+.Number.Cell {
+  width: 60px;
+}
+
+.Cell {
+  width: 80px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.GuessContainer {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.InputGuess {
+  padding: 10px;
+  width: 150px;
+  border: none;
+  border-radius: 0px;
+  background-color: #ffffff;
+}
+
+.InputGuess:focus {
+  outline: none;
+}
+
+.NewGame.GuessButton {
+  width: 150px;
+}
+
+.GuessButton {
+  height: 30px;
+  width: 75px;
+  border: none;
+  border-radius: 0;
+  background-color: #FF3864;
+  color: #ffffff;
+  transition: 0.2s ease-in-out;
+}
+
+.GuessButton:focus {
+  outline: none;
+}
+
+.GuessButton:hover {
+  background-color: #FF5C7F;
+}
+
+.GuessButton:active {
+  background-color: #FF1F4F;
+  transition: 0s;
+}
+
+.ResetButton {
+  height: 30px;
+  width: 75px;
+  border: none;
+  border-radius: 0;
+  background-color: #393D3F;
+  color: #ffffff;
+  transition: 0.2s ease-in-out;
+}
+
+.ResetButton:focus {
+  outline: none;
+}
+
+.ResetButton:hover {
+  background-color: #44494B;
+}
+
+.ResetButton:active {
+  background-color: #27292B;
+  transition: 0s;
+}
+
+
