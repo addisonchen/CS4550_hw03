@@ -1,12 +1,15 @@
 
 export function randomValue() {
 
-    let vals = [
-        Math.floor(Math.random() * 10) + '',
-        Math.floor(Math.random() * 10) + '',
-        Math.floor(Math.random() * 10) + '',
-        Math.floor(Math.random() * 10) + ''
-    ];
+    let vals = [];
+
+    var num;
+    while (vals.length < 4) {
+        num = Math.floor(Math.random() * 10) + '';
+        if (vals.includes(num)) {
+            vals.push(num);
+        }
+    }
     return vals;
 }
 
