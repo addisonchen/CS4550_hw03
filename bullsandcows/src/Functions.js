@@ -1,33 +1,35 @@
 
+// Generate a list of 4 random ints [0, 9] where no digits are repeated
+// returns ["#", "#", "#", "#"]
 export function randomValue() {
 
     let vals = [];
-
+  
     var num;
-    while (vals.length < 4) {
+    while(vals.length < 4) {
         num = Math.floor(Math.random() * 10) + '';
-        if (vals.includes(num)) {
+        if (!vals.includes(num)) {
             vals.push(num);
         }
     }
     return vals;
 }
 
+// calculate the correct number of bulls and cows for a guess
+// returns ["#", "#"]
 export function bullsAndCows(answer, guess) {
     guess = guess.split('');
-    let guessCopy = guess.slice()
+
     var i;
     let bulls = 0;
     let cows = 0;
 
     answer.forEach(a => {
-        for (i = 0; i < guessCopy.length; ++i) {
-            if (a === guessCopy[i]) {
-                guessCopy.splice(i, 1);
+        guess.forEach(q => {
+            if (q === a) {
                 ++cows;
-                break;
             }
-        }
+        });
     });
 
     for (i = 0; i < 4; ++i) {
@@ -39,3 +41,17 @@ export function bullsAndCows(answer, guess) {
 
     return [bulls + '', cows + '']
 }
+
+// Generates an empty game board
+export function emptyBoard() {
+    return [
+      {guess: null, bulls: null, cows: null},
+      {guess: null, bulls: null, cows: null},
+      {guess: null, bulls: null, cows: null},
+      {guess: null, bulls: null, cows: null},
+      {guess: null, bulls: null, cows: null},
+      {guess: null, bulls: null, cows: null},
+      {guess: null, bulls: null, cows: null},
+      {guess: null, bulls: null, cows: null}
+    ];
+  }

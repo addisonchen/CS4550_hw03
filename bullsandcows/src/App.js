@@ -1,16 +1,25 @@
 import './App.css';
 import { useState } from 'react';
 import GuessRow from './GuessRow';
-import { randomValue, bullsAndCows } from './Functions';
+import { randomValue, bullsAndCows, emptyBoard } from './Functions';
 
 function App() {
 
-
+  // answer: ["#", "#", "#", "#"], guess this to win!
   const [answer, setAnswer] = useState(randomValue);
+  // guessHistory: [{guess: "", bulls: "", cows: ""}] * 8, stores the guess data for one game
   const [guessHistory, setGuessHistory] = useState(emptyBoard);
+  // curGuess: "", stores the correct value of the text/input field
   const [curGuess, setCurGuess] = useState('');
+  // paused: bool, whether or not user input should be accepted
   const [paused, setPaused] = useState(false);
 
+  // called when the user presses enter or "guess"
+  // does nothing if paused
+  // does nothing if the guess is not 4 digits long
+  // determines bulls and cows
+  // sets guessHistory to the new correct state
+  // determines if game is over
   function guess() {
     if (paused) {
       return
@@ -51,6 +60,7 @@ function App() {
     setGuessHistory(newArr);
   }
 
+  // resets all states to a new game
   function reset() {
     setPaused(false);
     setCurGuess('');
@@ -58,6 +68,7 @@ function App() {
     setAnswer(randomValue);
   }
 
+  // checks if key pressed was enter, calls guess() if it was
   function handleKeyPress(ev) {
     if (paused) {
       return
@@ -67,22 +78,21 @@ function App() {
     }
   }
 
+  // filter out duplicate characters, filter out non-string chars.
+  // HANDLES FORCING NO DUPLICATE NUMBERS
   function handleValueChange(ev) {
-    setCurGuess(ev.target.value.replace(/[^0-9]/g,''));
+    // filter duplicates
+    let guessSet = new Set(ev.target.value);
+    let uniqueArr = [...guessSet]
+    // filter out NaNs
+    uniqueArr.filter(c => {
+      return !isNaN(c);
+    });
+    
+    // set the curGuess (input value) to the filterd string 
+    setCurGuess(uniqueArr.join(''));
   }
 
-  function emptyBoard() {
-    return [
-      {guess: null, bulls: null, cows: null},
-      {guess: null, bulls: null, cows: null},
-      {guess: null, bulls: null, cows: null},
-      {guess: null, bulls: null, cows: null},
-      {guess: null, bulls: null, cows: null},
-      {guess: null, bulls: null, cows: null},
-      {guess: null, bulls: null, cows: null},
-      {guess: null, bulls: null, cows: null}
-    ];
-  }
 
   return (
     <>
